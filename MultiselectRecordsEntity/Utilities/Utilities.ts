@@ -27,17 +27,28 @@ export class Utilities {
         item = typeof item !== "string"
             ? JSON.stringify(item)
             : item;
-    
+
         try {
             item = JSON.parse(item);
         } catch (e) {
             return false;
         }
-    
+
         if (typeof item === "object" && item !== null) {
             return true;
         }
-    
+
         return false;
+    }
+
+    static compare(columns: IColumnObject[], a: ComponentFramework.WebApi.Entity, b: ComponentFramework.WebApi.Entity): number {
+        const compareField = columns[0].fieldName;
+        if (a[compareField] < b[compareField]) {
+            return -1;
+        }
+        if (a[compareField] > b[compareField]) {
+            return 1;
+        }
+        return 0;
     }
 }

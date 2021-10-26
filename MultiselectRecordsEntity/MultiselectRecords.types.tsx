@@ -13,7 +13,7 @@ export interface IMultiselectProps {
     openWindow: any;
     width: string | number | undefined;
     eventOnChangeValue(textFieldValue: string): void;
-    triggerFilter(searchValue: string) : void;
+    triggerFilter(searchValue: string): void;
     attributeid: any;
     data: any;
     requestUrl: string,
@@ -31,6 +31,7 @@ export interface IMultiselectProps {
     populatedFieldVisible: boolean,
     records: any,
     logicalName: string,
+    searchPlaceholder: string,
     widthProp: number,
     heightProp: number,
     filterTags: boolean,

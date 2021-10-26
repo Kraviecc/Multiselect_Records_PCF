@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Stack, IDetailsRowProps, IRenderFunction, CommandBarButton, PrimaryButton, IIconProps, initializeIcons, Spinner, SpinnerSize, IconButton, TooltipHost } from '@fluentui/react';
+import { Stack, IDetailsRowProps, IRenderFunction, CommandBarButton, PrimaryButton, IIconProps, initializeIcons, IconButton, TooltipHost } from '@fluentui/react';
 import { TextField } from '@fluentui/react/lib/TextField';
 import {
     DetailsList,
@@ -92,7 +92,7 @@ const MultiselectRecords = (props: IMultiselectProps) => {
 
         if (recordsPassedParamCopy != null || recordsRetrieved != null && recordsRetrieved.entities.length != 0) {
             const selectedItemsWhenOpened: any = recordsRetrieved != null ? recordsRetrieved.entities : [];
-            for (var item of selectedItemsWhenOpened) {
+            for (var item of selectedItemsWhenOpened.reverse()) {
                 var itemFiltered = recordsPassedParamCopy.filter((x: any) => x[props.attributeid] == item[props.attributeid]);
                 var index = recordsPassedParamCopy.findIndex((x: any) => x[props.attributeid] == item[props.attributeid]);
                 if (index != -1) {
@@ -266,7 +266,7 @@ const MultiselectRecords = (props: IMultiselectProps) => {
                         autoComplete="off"
                         styles={{ root: { flex: 1, position: 'relative', marginTop: 10 } }}
                         disabled={props.isControlDisabled}
-                        placeholder="Search..."
+                        placeholder={props.searchPlaceholder}
                         errorMessage={errorMessage}
                         onKeyUp={enterFilterRecords}
                         data-custom-id="search-custom-field"
@@ -372,8 +372,8 @@ const MultiselectRecords = (props: IMultiselectProps) => {
                     </Sticky>
                 </Stack>
             )
-            
-            
+
+
         } else {
             return (
                 <></>
@@ -654,7 +654,7 @@ const MultiselectRecords = (props: IMultiselectProps) => {
             </div>
         </div>
     );
-    
+
 }
 
 export default MultiselectRecords;

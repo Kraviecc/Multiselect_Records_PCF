@@ -48,6 +48,7 @@ export class MultiselectRecordsEntity implements ComponentFramework.StandardCont
 		isControlVisible: true,
 		selectedRecords: [],
 		populatedFieldVisible: true,
+		searchPlaceholder: "",
 		logicalName: "",
 		openWindow: "",
 		widthProp: 200,
@@ -85,6 +86,7 @@ export class MultiselectRecordsEntity implements ComponentFramework.StandardCont
 		this.props.attributeid = this._context.parameters.attributeid.raw || "accountid";
 		this._filterDynamicValues = this._context.parameters.filterDynamicValues.raw || "";
 		this._filterLookup1stValue = this._context.parameters.filterLookup1stValue.raw;
+		this.props.searchPlaceholder = this._context.parameters.searchPlaceholder.raw || "Search...";
 		const contextPage = (context as any).page;
 		this._entityRecordId = contextPage.entityId;
 		this._entityRecordName = contextPage.entityTypeName;
@@ -116,6 +118,7 @@ export class MultiselectRecordsEntity implements ComponentFramework.StandardCont
 		this.props.widthProp = context.mode.allocatedWidth - 20;
 		this.props.heightProp = context.mode.allocatedHeight;
 		this.props.context = context;
+		this._filterLookup1stValue = context.parameters.filterLookup1stValue.raw;
 		this.renderElement()
 	}
 
@@ -132,7 +135,10 @@ export class MultiselectRecordsEntity implements ComponentFramework.StandardCont
 		} else {
 			this._records = await MultiselectModel.GetDataFromMock(input);
 		}
-		this.props.records = this._records;
+
+		this.props.records = this._records
+			.sort((a: ComponentFramework.WebApi.Entity, b: ComponentFramework.WebApi.Entity) => Utilities.compare(this.props.columns, a, b));
+
 		if (this.props.inputValue === null) {
 			this.props.inputValue = "";
 		}
@@ -182,7 +188,7 @@ export class MultiselectRecordsEntity implements ComponentFramework.StandardCont
 	 * Parse and fill the new filter with the form values from the entity record
 	 */
 	private getLookupId(value: ComponentFramework.LookupValue[]): string {
-		if (value?.length === 0)
+		if (!value || value.length === 0)
 			return "";
 
 		return value[0].id;

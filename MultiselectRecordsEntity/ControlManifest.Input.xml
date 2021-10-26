@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <manifest>
-  <control namespace="VictorSanchez" constructor="MultiselectRecordsEntity" version="0.0.28" display-name-key="Multiselect Records Entity" description-key="Multiple selector for several records and insert in a string" control-type="standard">
+  <control namespace="VictorSanchez" constructor="MultiselectRecordsEntity" version="0.0.38" display-name-key="Multiselect Records Entity" description-key="Multiple selector for several records and insert in a string" control-type="standard">
     <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
-     <type-group name="textareas">
-        <type>SingleLine.Text</type>
-        <type>SingleLine.TextArea</type>
-        <type>Multiple</type>
-      </type-group>
+    <type-group name="textareas">
+      <type>SingleLine.Text</type>
+      <type>SingleLine.TextArea</type>
+      <type>Multiple</type>
+    </type-group>
     <property name="field" display-name-key="Field" description-key="Field to be populated with the selected values" of-type-group="textareas" usage="bound" required="true" />
     <property name="entityName" display-name-key="Entity Name" description-key="Name of the entity from which you want to return results" of-type="SingleLine.Text" usage="input" required="true" />
     <property name="data" display-name-key="Data" description-key="Data field from request to be inserted in field" of-type="SingleLine.Text" usage="input" required="true" />
@@ -15,7 +15,8 @@
     <property name="filter" display-name-key="Filter" description-key="Query to filter the results to return." of-type-group="textareas" usage="input" required="true" />
     <property name="filterDynamicValues" display-name-key="Field Filter Values" description-key="Fields from the record entity to filter your query split by comma." of-type="SingleLine.Text" usage="input" required="false" />
     <property name="filterLookup1stValue" display-name-key="Field Filter Form Lookup 1st Value" description-key="Field value from the record form to filter your query. Used as index 100 in filter." of-type="Lookup.Simple" usage="input" required="false" />
-    
+    <property name="searchPlaceholder" display-name-key="Search Placeholder" description-key="Placeholder for search input" of-type="SingleLine.Text" usage="input" required="false" />
+
     <property name="columns" display-name-key="Columns" description-key="Columns to be displayed in the list with the following syntax: DisplayName,fieldName;Name,name;Age,age" of-type-group="textareas" usage="input" required="true" />
     <property name="headerVisible" display-name-key="Header Visible" description-key="Is the header of the columns visible for the list?" of-type="Enum" usage="input" required="true">
       <value name="true" display-name-key="True" description-key="true">True</value>
@@ -38,10 +39,10 @@
       <value name="false" display-name-key="False" description-key="false">False</value>
     </property>
     <property name="recordsToBeReturned" display-name-key="Amount of records to be shown as maximum" description-key="Set the number of records to be shown in the list as maximum. By default 50" of-type="Whole.None" usage="input" required="false" />
-   
+
     <resources>
-      <code path="index.ts" order="1"/>
-       <css path="css/MultiselectRecords.css" order="1" />
+      <code path="index.ts" order="1" />
+      <css path="css/MultiselectRecords.css" order="1" />
     </resources>
     <feature-usage>
       <uses-feature name="Utility" required="true" />
