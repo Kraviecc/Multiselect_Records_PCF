@@ -237,8 +237,22 @@ const MultiselectRecords = (props: IMultiselectProps) => {
                             const theItem = JSON.parse(item);
                             return (
                                 <Stack horizontal style={{ border: "1px solid #106EBE" }}>
-                                    <PrimaryButton className="buttonContainer" style={{ borderRadius: 0 }} key={theItem.id} data-id={theItem.id} text={theItem.name} onClick={triggerItemClick} />
-                                    <IconButton primary iconProps={clearIcon} title="Clear" ariaLabel="Clear" onClick={removeFieldValue} data-custom-id="button-custom-clear" />
+                                    <PrimaryButton 
+                                        className="buttonContainer" 
+                                        disabled={props.isControlDisabled}
+                                        style={{ borderRadius: 0 }} 
+                                        key={theItem.id} 
+                                        data-id={theItem.id} 
+                                        text={theItem.name} 
+                                        onClick={triggerItemClick} />
+                                    <IconButton 
+                                        primary 
+                                        disabled={props.isControlDisabled}
+                                        iconProps={clearIcon} 
+                                        title="Clear"
+                                        ariaLabel="Clear" 
+                                        onClick={removeFieldValue} 
+                                        data-custom-id="button-custom-clear" />
                                 </Stack>
                             )
                         })}
@@ -278,7 +292,7 @@ const MultiselectRecords = (props: IMultiselectProps) => {
                         onClick={filterRecordsClick}
                         cellPadding={0}
                         width={40}
-
+                        disabled={props.isControlDisabled}
                         styles={{ root: { position: 'relative', marginTop: 10, padding: 0, minWidth: 40 } }}
                         data-custom-id="button-custom-search"
                     />

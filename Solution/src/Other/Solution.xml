@@ -13,21 +13,21 @@
     <Managed>2</Managed>
     <Publisher>
       <!-- Unique Publisher Name of Cds Solution -->
-      <UniqueName>{{provide publisher}}</UniqueName>
+      <UniqueName>siispzoo</UniqueName>
       <LocalizedNames>
         <!-- Localized Cds Publisher Name in language code-->
-        <LocalizedName description="{{provide publisher}}" languagecode="1033" />
+        <LocalizedName description="siispzoo" languagecode="1033" />
       </LocalizedNames>
       <Descriptions>
         <!-- Description of Cds Publisher in language code -->
-        <Description description="{{provide publisher}}" languagecode="1033" />
+        <Description description="siispzoo" languagecode="1033" />
       </Descriptions>
       <EMailAddress xsi:nil="true"></EMailAddress>
       <SupportingWebsiteUrl xsi:nil="true"></SupportingWebsiteUrl>
       <!-- Customization Prefix for the Cds Publisher-->
-      <CustomizationPrefix>{{provide publisher}}</CustomizationPrefix>
+      <CustomizationPrefix>sii</CustomizationPrefix>
       <!-- Derived Option Value Prefix for the Customization Prefix of Cds Publisher -->
-      <CustomizationOptionValuePrefix>{{provide publisher}}</CustomizationOptionValuePrefix>
+      <CustomizationOptionValuePrefix>59675</CustomizationOptionValuePrefix>
       <Addresses>
         <!-- Address of the Publisher-->
         <Address>
